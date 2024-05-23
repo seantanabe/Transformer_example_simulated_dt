@@ -323,11 +323,19 @@ for i_n in range(N_neuron):
     axs[i_n].plot(t_ms,aaa_mn[i_n,:], color='red',linewidth=0.5)
     axs[i_n].autoscale(tight=True)
     axs[i_n].set_ylabel(f'neuron {i_n + 1} \n activity')
+    if i == 5:
+        axs[i_n].plot(t_ms,bbb_mn[i_n,:], color='black',linewidth=0.5, label=labels[0])
+        axs[i_n].plot(t_ms,aaa_mn[i_n,:], color='red',linewidth=0.5, label=labels[1])
+        axs[i].legend(loc="upper left")
 axs[i_n].set_xlabel('time from reach (ms)')
 
 
 fig, axs = plt.subplots(nrows=1, ncols=2, sharex=True, sharey=True)
-axs[0].imshow(aaa_rs[0,:,:], aspect='auto')
-axs[1].imshow(bbb_rs[0,:,:], aspect='auto')
+axs[0].imshow(aaa_rs[0,:,:], aspect='auto', cmap='gray_r')
+axs[1].imshow(bbb_rs[0,:,:], aspect='auto', cmap='gray_r')
 # plt.imshow(ccc_rs[0,:,:], aspect='auto')
-
+axs[0].set_ylabel('test trials')
+axs[0].set_xlabel('time unit (arb.)')
+axs[1].set_xlabel('time unit (arb.)')
+axs[0].title.set_text('predicted')
+axs[1].title.set_text('neuron 1 \n activity')
